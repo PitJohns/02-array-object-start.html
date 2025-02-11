@@ -17,47 +17,48 @@ array[array.length] = 'becon';
  const listElement = document.getElementById('list');
 
  //console.log(inputElement.value );
-
-const notes = ['рассказать блок про массивы', 'рассказать теорию объектов', 42]
-
-function render() {
+// const notes = ['рассказать блок про массивы', 'рассказать теорию объектов', 42]
+/*function render() {
     /*for (let i = 0; i < notes.length; i++) {
         listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i]))
-    }*/
+    }*
    for (let note of notes) {
     listElement.insertAdjacentHTML('beforeend', getNoteTemplate(note))
    }
 };
 
-render();
+render();*/
 
  createBtn.onclick = function () {
     if (inputElement.value.length === 0) {
         return
     }
-     listElement.insertAdjacentHTML(
-        'beforeend',
-        getNoteTemplate(inputElement.value)
-    );
+    const newNote = {
+      title: inputElement.value,
+      completed: false,   };
+    listElement.insertAdjacentHTML('beforeend', getNoteTemplate(newNote));
     inputElement.value = '';  
  };
 
- function getNoteTemplate(title) {
+ function getNoteTemplate(note, index) {
     return `
      <li class="list-group-item d-flex justify-content-between 
         align-items-center"
     >
-        <span>${title}</span>
+        <span class="${note.completed ? 'text-decoration-line-through' : ''}">
+        ${note.title}</span>
         <span>
-            <span class="btn btn-small btn-success">&check;</span>
+            <span class="btn btn-${note.completed ? 'warning' : 'success'
+            }" data-index="${index}">&check;</span>
             <span class="btn btn-small btn-danger">&times;</span>
         </span>
         </li>`
  };
 
  /**
+  * 
   * Object Theory 
-  */
+  
  const person = {
     firstName: 'Vladilen',
     lastName: 'Minin',
@@ -73,4 +74,29 @@ render();
 console.log(person.year);
 console.log(person['firstName']);
 
-2:17
+const key = 'hasGirlfriend'
+console.log(person[key])
+person.hasGirlfriend = true;
+console.log(person[key])
+person.getFullName() 
+*/
+
+const notes = [
+   {
+    title: 'записать блок про массивы',
+    completed: true,
+   }, 
+   {
+    title: 'рассказать теорию объектов',
+    completed: true,
+   }, 
+];
+
+function render() {
+  for (let i = 0; i < notes.length; i++) {
+  listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i], i))
+ }
+};
+render();
+
+2:32
