@@ -53,4 +53,4 @@ const people = [
 
  //console.log(people.indexOf({budget: 7520 }));
 
- 3:16
+ 
