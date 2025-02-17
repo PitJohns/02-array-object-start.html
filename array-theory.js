@@ -53,4 +53,20 @@ const people = [
 
  //console.log(people.indexOf({budget: 7520 }));
 
- 
+ /*let findedPerson 
+
+ for (let person of people) {
+  if (person.budget === 7520) {
+    findedPerson = person
+  };
+ };*/
+
+const findedPerson = people.find(function
+  (person) {
+    if (person.budget === 7520) {
+      return true
+    }
+})
+
+ console.log(findedPerson);
+ 3Ж:18:59
